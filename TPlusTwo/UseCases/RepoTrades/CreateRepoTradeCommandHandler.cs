@@ -1,22 +1,23 @@
 ﻿using CSharpFunctionalExtensions;
+using TPlusTwo.Controllers;
 using TPlusTwo.Core.RepoTrades;
 using TPlusTwo.Ports.RepoTrades;
 
 namespace TPlusTwo.UseCases.RepoTrades;
 
-//delegate needed for easier use of IoC. Otherwise could be a simple Func<>
-public delegate UnitResult<IError> HandleCreateRepoTradeCommand(
-    CreateRepoTradeCommand cmd);
-
-public static class RepoTrades
+public class CreateRepoTradeCommandHandler
 {
-    public static UnitResult<IError> Handle(StoreRepoTrade storeRepoTrade, CreateRepoTradeCommand cmd)
+    public required HandleCreateRepoTradeCommand Handle;
+    private readonly StoreRepoTrade storeRepoTrade;
+
+    public CreateRepoTradeCommandHandler(StoreRepoTrade storeRepoTrade)
     {
-        //todo: validation via transformation to Value Objects
+        this.storeRepoTrade = storeRepoTrade;
+        Handle = HandleImpl;
+    }
 
-        //RepoTradeId.From()
-
-
+    public UnitResult<IError> HandleImpl(CreateRepoTradeCommand cmd)
+    {
         var result = RepoTrade.Create(
             cmd.TradeDate,
             cmd.SettlementDate,

@@ -1,15 +1,15 @@
+using CSharpFunctionalExtensions;
 using Microsoft.AspNetCore.Mvc;
 using TPlusTwo.UseCases.RepoTrades;
 
 namespace TPlusTwo.Controllers;
 
-//delegate
-public delegate /*TODO: Unit<Error> */string HandleCreateRepoTradeCommand(
+//delegate needed for easier use of IoC. Otherwise could be a simple Func<>
+public delegate UnitResult<IError> HandleCreateRepoTradeCommand(
     CreateRepoTradeCommand cmd);
 
-
-[ApiController] //ApiController causes any validation errors to be returned before hitting the action
-[Route("[controller]")]
+[ApiController]
+[Route("[controller]/[action]")]
 public class RepoTradesController : ControllerBase
 {
     private readonly HandleCreateRepoTradeCommand handleCreateRepoTradeCommand;
@@ -25,9 +25,10 @@ public class RepoTradesController : ControllerBase
         handleCreateRepoTradeCommand(cmd);
     }
 
+    /*
     [HttpPost]
     public void CreateRepoTrade2(HandleCreateRepoTradeCommand handleCreateRepoTradeCommand, CreateRepoTradeCommand cmd)
     {
         handleCreateRepoTradeCommand(cmd);
-    }
+    }*/
 }

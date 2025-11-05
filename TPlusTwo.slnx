@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="TPlusTwo.AspIntegrationTests/TPlusTwo.AspIntegrationTests.csproj" Id="9c066c97-2bb9-4e7e-8a0e-31c52e49d99b" />
   <Project Path="TPlusTwo.Tests/TPlusTwo.Tests.csproj" Id="a300853b-a72e-452e-ac35-a500e05c9f9f" />
   <Project Path="TPlusTwo/TPlusTwo.csproj" />
 </Solution>
