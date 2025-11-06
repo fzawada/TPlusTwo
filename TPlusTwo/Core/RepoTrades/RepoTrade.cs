@@ -2,14 +2,14 @@
 
 namespace TPlusTwo.Core.RepoTrades;
 
-public partial record class RepoTrade
+public sealed partial record class RepoTrade
 {
-    public RepoTradeId Id { get; private set; }
-    public RepoTradeVersion Version { get; private set; }
-    public DateOnly TradeDate { get; private set; }
-    public DateOnly SettlementDate { get; private set; }
-    public decimal Nominal { get; private set; }
-    public string Instrument { get; private set; }
+    public RepoTradeId Id { get; private init; }
+    public RepoTradeVersion Version { get; private init; }
+    public DateOnly TradeDate { get; private init; }
+    public DateOnly SettlementDate { get; private init; }
+    public decimal Nominal { get; private init; }
+    public string Instrument { get; private init; }
 
     private RepoTrade(
         RepoTradeId id,
@@ -52,12 +52,12 @@ public partial record class RepoTrade
         string? instrument = null) =>
         (this with
         {
-            Id = id ?? this.Id,
-            Version = version ?? this.Version,
-            TradeDate = tradeDate ?? this.TradeDate,
-            SettlementDate = settlementDate ?? this.SettlementDate,
-            Nominal = nominal ?? this.Nominal,
-            Instrument = instrument ?? this.Instrument
+            Id = id ?? Id,
+            Version = version ?? Version,
+            TradeDate = tradeDate ?? TradeDate,
+            SettlementDate = settlementDate ?? SettlementDate,
+            Nominal = nominal ?? Nominal,
+            Instrument = instrument ?? Instrument
         }).EnsureInvariants();
 
     public Result<RepoTrade, IValidationError> EnsureInvariants()
