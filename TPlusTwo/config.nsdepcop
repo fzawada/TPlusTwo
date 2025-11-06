@@ -1,0 +1,18 @@
+<NsDepCopConfig IsEnabled="true" ChildCanDependOnParentImplicitly="true">
+    <!-- who can reference everything -->
+    <Allowed From="." To="*" />
+    <Allowed From="TPlusTwo.TypesRegistration" To="*" />
+    
+    <!-- what is available to everyone -->
+    <Allowed From="*" To="System.*" />
+    <Allowed From="*" To="CSharpFunctionalExtensions.*" />
+
+    <!-- remaining rules -->
+    <Allowed From="TPlusTwo.*" To="TPlusTwo.Core.*" />
+    <Allowed From="TPlusTwo.Controllers.*" To="Microsoft.AspNetCore.Mvc" />
+    <Allowed From="TPlusTwo.Controllers.*" To="TPlusTwo.UseCases.*" />
+    <Allowed From="TPlusTwo.Core.*" To="TPlusTwo.Ports" />
+    <Allowed From="TPlusTwo.Core.*" To="Vogen.*" />
+    <Allowed From="TPlusTwo.Adapters.*" To="TPlusTwo.Ports" />
+    <Allowed From="TPlusTwo.UseCases.*" To="TPlusTwo.Ports.*" />
+</NsDepCopConfig>

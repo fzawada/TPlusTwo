@@ -11,7 +11,8 @@ public class SettlementBeforeTradeDateError : IValidationError
         settlementDate = rt.SettlementDate;
     }
 
-    public string Message => $"Settlement date {settlementDate:yyyy-MM-dd} cannot be before trade date {tradeDate:yyyy-MM-dd}";
+    public string Message =>
+        $"Settlement date {settlementDate:yyyy-MM-dd} cannot be before trade date {tradeDate:yyyy-MM-dd}";
 
     internal static SettlementBeforeTradeDateError From(RepoTrade rt) =>
         new SettlementBeforeTradeDateError(rt);

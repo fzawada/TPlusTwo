@@ -1,5 +1,3 @@
-using TPlusTwo;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -10,7 +8,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddSwaggerGen();
 
-TypesRegistration.RegisterTypes(builder.Services);
+TPlusTwo.TypesRegistration.Registrar.RegisterTypes(builder.Services);
 
 var app = builder.Build();
 
