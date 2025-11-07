@@ -1,9 +1,25 @@
-﻿namespace TPlusTwo.UseCases.RepoTrades;
+﻿using System.Diagnostics.CodeAnalysis;
+using TPlusTwo.Core.RepoTrades;
 
-public record class CreateRepoTradeCommand
+namespace TPlusTwo.UseCases.RepoTrades;
+
+public class CreateRepoTradeCommand
 {
-    public required DateOnly TradeDate { get; init; }
-    public required DateOnly SettlementDate { get; init; }
-    public required decimal Nominal { get; init; }
-    public required string Instrument { get; init; }
+    public required TradeDate TradeDate { get; init; }
+    public required SettlementDate SettlementDate { get; init; }
+    public required Nominal Nominal { get; init; }
+    public required Instrument Instrument { get; init; }
+
+    [SetsRequiredMembers]
+    public CreateRepoTradeCommand(
+        TradeDate tradeDate,
+        SettlementDate settlementDate,
+        Nominal nominal,
+        Instrument instrument)
+    {
+        TradeDate = tradeDate;
+        SettlementDate = settlementDate;
+        Nominal = nominal;
+        Instrument = instrument;
+    }
 }

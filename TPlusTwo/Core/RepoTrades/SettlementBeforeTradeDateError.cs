@@ -2,8 +2,8 @@
 
 public class SettlementBeforeTradeDateError : IValidationError
 {
-    private readonly DateOnly tradeDate;
-    private readonly DateOnly settlementDate;
+    private readonly TradeDate tradeDate;
+    private readonly SettlementDate settlementDate;
 
     private SettlementBeforeTradeDateError(RepoTrade rt)
     {
